@@ -22,17 +22,19 @@ public class Main {
     
     public static int Leer(){
         Scanner scan = new Scanner(System.in);
-        boolean verificar = true;
+        boolean verificar=false;
         int numeroLineas = 0;
         do{
             System.out.println("Ingrese el numero de lineas");
             try{
-                if(verificar==false){
-                    verificar = true;
-                }
                 numeroLineas = scan.nextInt();
+                if(verificar==false && numeroLineas>0){
+                    verificar = true;
+                }else{
+                    System.out.println("Debe ingresar un numero positivo.");
+                }
             }catch(java.util.InputMismatchException e){
-                System.out.println("Debe ingresar un valor numerico.");
+                System.out.println("Debe ingresar un valor numerico o numero un entero.");
                 verificar = false;
                 scan.next();
             }
@@ -41,40 +43,25 @@ public class Main {
     } 
      
     public static void Imprimir(int numLineas){
-        String espacio = " ";
         for(int a=1;a<=numLineas;a++){
             for(int b=numLineas-a;b>0;b--){
-                System.out.print(espacio);
+                System.out.print(" ");
             }
-            switch(a){
-                case 1:
-                    System.out.print("/");
-                    System.out.println("\\");
-                    break;
-                case 2:
-                    System.out.print("//");
-                    System.out.println("\\\\");
-                    break;
+            System.out.print("/");
+            for(int c=a-1;c>0;c--){
+                System.out.print("/\\");
             }
-            if(numLineas>2 && a>2){
-                System.out.print("//");
-                for(int c=a-2;c>0;c--){
-                    System.out.print("\\/");
-                }
-                System.out.println("\\\\");
-            }
+            System.out.println("\\");
         }
     }
     
     public static boolean Repetir(){
-        System.out.println("");
-        System.out.println("Desea dibujar otra piramide (y/n)");
+        System.out.println("\nDesea dibujar otra piramide (s/n)");
         Scanner scan = new Scanner(System.in);
-        boolean repetir= true;
-        String rep;
-        rep = scan.nextLine();
+        boolean repetir;
+        String rep = scan.nextLine();
         switch(rep){
-            case "y":
+            case "s":
                 repetir = true;
                 break;
             case "n":
@@ -84,7 +71,6 @@ public class Main {
             default:
                 System.out.println("No escogiste ninguna opcion. Feliz dia!");
                 repetir = false;
-                
         }
         return repetir;
     }
