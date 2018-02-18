@@ -31,10 +31,10 @@ public class Main {
                 if(verificar==false && numeroLineas>0){
                     verificar = true;
                 }else{
-                    System.out.println("Debe ingresar un numero positivo.");
+                    System.out.println("Debe ingresar un numero positivo.\n");
                 }
             }catch(java.util.InputMismatchException e){
-                System.out.println("Debe ingresar un valor numerico o numero un entero.");
+                System.out.println("Debe ingresar un valor numerico o numero un entero.\n");
                 verificar = false;
                 scan.next();
             }
